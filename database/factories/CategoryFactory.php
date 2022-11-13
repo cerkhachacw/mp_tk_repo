@@ -22,11 +22,10 @@ class CategoryFactory extends FactoriesFactory
      */
     public function definition()
     {
-        $faker = \Faker\Factory::create('id_ID');
         return [
-            'name' => $faker->name(),
-            'description' => $faker->text(),
-            'slug' => $faker->slug(),
+            'name' => fake()->name(),
+            'description' => fake()->text(),
+            'slug' => fake()->slug(),
             'category_group_id' => CategoryGroup::factory(),
         ];
     }

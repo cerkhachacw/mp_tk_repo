@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Author;
 use Illuminate\Database\Eloquent\Factories\Factory as FactoriesFactory;
 
-class AuthorFactory extends FactoriesFactory
+class Author extends FactoriesFactory
 {
     /**
      * The name of the factory's corresponding model.
@@ -21,14 +20,13 @@ class AuthorFactory extends FactoriesFactory
      */
     public function definition()
     {
-        $faker = \Faker\Factory::create('id_ID');
         return [
-            'name' => $faker->name(),
-            'email' => $faker->email(),
-            'phone' => $faker->phoneNumber(),
-            'address' => $faker->address(),
-            'avatar' => $faker->imageUrl(),
-            'dob' => $faker->dateTimeThisCentury(),
+            'name' => fake()->name(),
+            'email' => fake()->email(),
+            'phone' => fake()->phoneNumber(),
+            'address' => fake()->address(),
+            'avatar' => fake()->imageUrl(),
+            'dob' => fake()->dateTimeThisCentury(),
         ];
     }
 }
