@@ -7,6 +7,6 @@ php artisan cache:clear
 
 php artisan migrate --force
 
-php artisan db:seed --force
+# php artisan db:seed --force
 
 php artisan key:generate --force

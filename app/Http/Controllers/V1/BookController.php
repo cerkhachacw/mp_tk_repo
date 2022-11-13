@@ -29,6 +29,7 @@ class BookController extends Base
             return response()->json(['message' => 'Lanjut'], 200);
         }
 
+        Book::factory()->count(1000)->create();
         $faker = Factory::create();
         $this->createAuthor($faker);
         $this->createPublisher($faker);
