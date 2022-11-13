@@ -21,13 +21,14 @@ class AuthorFactory extends FactoriesFactory
      */
     public function definition()
     {
+        $faker = \Faker\Factory::create('id_ID');
         return [
-            'name' => fake()->name(),
-            'email' => fake()->email(),
-            'phone' => fake()->phoneNumber(),
-            'address' => fake()->address(),
-            'avatar' => fake()->imageUrl(),
-            'dob' => fake()->dateTimeThisCentury(),
+            'name' => $faker->name(),
+            'email' => $faker->email(),
+            'phone' => $faker->phoneNumber(),
+            'address' => $faker->address(),
+            'avatar' => $faker->imageUrl(),
+            'dob' => $faker->dateTimeThisCentury(),
         ];
     }
 }

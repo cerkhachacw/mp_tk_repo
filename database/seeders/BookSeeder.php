@@ -6,6 +6,7 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\CategoryGroup;
 use App\Models\Publisher;
+use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -19,13 +20,14 @@ class BookSeeder extends Seeder
     public function run()
     {
         // will be used to create a book
-        // Book::factory()->count(1000)->create();
-        $this->createAuthor();
-        $this->createPublisher();
-        $this->createCategoryGroup();
+        Book::factory()->count(1000)->create();
+        $faker = Factory::create();
+        $this->createAuthor($faker);
+        $this->createPublisher($faker);
+        $this->createCategoryGroup($faker);
     }
 
-    private function createAuthor()
+    private function createAuthor($faker)
     {
         $authors = [
             'J. K. Rowling',
@@ -40,16 +42,16 @@ class BookSeeder extends Seeder
         foreach ($authors as $author) {
             Author::create([
                 'name' => $author,
-                'email' => fake()->email(),
-                'phone' => fake()->phoneNumber(),
-                'address' => fake()->address(),
-                'avatar' => fake()->imageUrl(),
-                'dob' => fake()->dateTimeThisCentury(),
+                'email' => $faker->email(),
+                'phone' => $faker->phoneNumber(),
+                'address' => $faker->address(),
+                'avatar' => $faker->imageUrl(),
+                'dob' => $faker->dateTimeThisCentury(),
             ]);
         }
     }
 
-    private function createPublisher()
+    private function createPublisher($faker)
     {
         $publishers = [
             'Penguin Random House',
@@ -72,12 +74,12 @@ class BookSeeder extends Seeder
         foreach ($publishers as $publisher) {
             Publisher::create([
                 'name' => $publisher,
-                'description' => fake()->text(),
+                'description' => $faker->text(),
             ]);
         }
     }
 
-    private function createCategoryGroup()
+    private function createCategoryGroup($faker)
     {
         $categoryGroups = [
             [
@@ -141,25 +143,25 @@ class BookSeeder extends Seeder
             $categoryGroupRecord = CategoryGroup::create([
                 'name' => $categoryGroup['title'],
                 'slug' => strtolower($categoryGroup['title']),
-                'description' => fake()->text(),
+                'description' => $faker->text(),
             ]);
 
             foreach ($categoryGroup['categories'] as $category) {
                 $category = $categoryGroupRecord->categories()->create([
                     'name' => $category,
                     'slug' => strtolower($category),
-                    'description' => fake()->text(),
+                    'description' => $faker->text(),
                 ]);
 
                 for ($i = 0; $i < 10; $i++) {
                     $category->books()->create([
-                        'title' => fake()->sentence(),
-                        'description' => fake()->text(),
-                        'price' => fake()->randomFloat(2, 1, 100),
-                        'quantity' => fake()->numberBetween(0, 100),
-                        'cover' => fake()->imageUrl(),
+                        'title' => $faker->sentence(),
+                        'description' => $faker->text(),
+                        'price' => $faker->randomFloat(2, 1, 100),
+                        'quantity' => $faker->numberBetween(0, 100),
+                        'cover' => $faker->imageUrl(),
                         'author_id' => Author::inRandomOrder()->first()->id,
-                        'publish_date' => fake()->dateTimeThisCentury(),
+                        'publish_date' => $faker->dateTimeThisCentury(),
                         'publisher_id' => Publisher::inRandomOrder()->first()->id,
                     ]);
                 }

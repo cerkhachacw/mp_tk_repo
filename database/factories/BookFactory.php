@@ -24,16 +24,17 @@ class BookFactory extends FactoriesFactory
      */
     public function definition()
     {
+        $faker = \Faker\Factory::create('id_ID');
         return [
-            'title' => fake()->name(),
-            'description' => fake()->text(),
+            'title' => $faker->name(),
+            'description' => $faker->text(),
             'author_id' => Author::factory(),
             'publisher_id' => Publisher::factory(),
             'category_id' => Category::factory(),
-            'price' => fake()->randomFloat(2, 0, 100),
-            'quantity' => fake()->numberBetween(0, 100),
-            'cover' => fake()->imageUrl(),
-            'publish_date' => fake()->dateTimeThisCentury(),
+            'price' => $faker->randomFloat(2, 0, 100),
+            'quantity' => $faker->numberBetween(0, 100),
+            'cover' => $faker->imageUrl(),
+            'publish_date' => $faker->dateTimeThisCentury(),
         ];
     }
 }

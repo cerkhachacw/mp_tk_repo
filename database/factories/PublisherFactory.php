@@ -21,9 +21,10 @@ class PublisherFactory extends FactoriesFactory
      */
     public function definition()
     {
+        $faker = \Faker\Factory::create('id_ID');
         return [
-            'name' => fake()->name(),
-            'description' => fake()->text(),
+            'name' => $faker->name(),
+            'description' => $faker->text(),
         ];
     }
 }
