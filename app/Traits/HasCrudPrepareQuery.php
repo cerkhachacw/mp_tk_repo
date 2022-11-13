@@ -70,7 +70,6 @@ trait HasCrudPrepareQuery
     public function __prepareQueryListType($query)
     {
         $request = $this->requestData;
-        dd(($request->query('type') ?? $this->queryType));
         if (($request->query('type') ?? $this->queryType) == 'pagination') {
             $query = $query->paginate($this->paginationPerPage);
             $this->__prepareListPaginationAppend($query);
