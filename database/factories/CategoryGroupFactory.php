@@ -2,9 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\CategoryGroup;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CategoryGroup extends Factory
+class CategoryGroupFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.

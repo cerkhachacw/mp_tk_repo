@@ -23,7 +23,9 @@ return new class extends Migration
             $table->integer('publisher_id')->nullable()->index();
             $table->integer('category_id')->nullable()->index();
             $table->string('cover')->nullable();
-            $table->dateTime('published_at')->nullable();
+            $table->integer('price')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->dateTime('publish_date')->nullable();
         });
     }
 

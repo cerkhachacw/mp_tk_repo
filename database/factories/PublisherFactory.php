@@ -2,16 +2,17 @@
 
 namespace Database\Factories;
 
+use App\Models\Publisher;
 use Illuminate\Database\Eloquent\Factories\Factory as FactoriesFactory;
 
-class Author extends FactoriesFactory
+class PublisherFactory extends FactoriesFactory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Author::class;
+    protected $model = Publisher::class;
 
     /**
      * Define the model's default state.
@@ -22,11 +23,7 @@ class Author extends FactoriesFactory
     {
         return [
             'name' => fake()->name(),
-            'email' => fake()->email(),
-            'phone' => fake()->phoneNumber(),
-            'address' => fake()->address(),
-            'avatar' => fake()->imageUrl(),
-            'dob' => fake()->dateTimeThisCentury(),
+            'description' => fake()->text(),
         ];
     }
 }

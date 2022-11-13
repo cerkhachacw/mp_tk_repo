@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\CategoryGroup;
 use Illuminate\Database\Eloquent\Factories\Factory as FactoriesFactory;
 
-class Category extends FactoriesFactory
+class CategoryFactory extends FactoriesFactory
 {
     /**
      * The name of the factory's corresponding model.

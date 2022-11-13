@@ -3,11 +3,12 @@
 namespace Database\Factories;
 
 use App\Models\Author;
+use App\Models\Book;
 use App\Models\Category;
 use App\Models\Publisher;
 use Illuminate\Database\Eloquent\Factories\Factory as FactoriesFactory;
 
-class Book extends FactoriesFactory
+class BookFactory extends FactoriesFactory
 {
     /**
      * The name of the factory's corresponding model.
@@ -26,10 +27,13 @@ class Book extends FactoriesFactory
         return [
             'name' => fake()->name(),
             'description' => fake()->text(),
-            'slug' => fake()->slug(),
             'author_id' => Author::factory(),
             'publisher_id' => Publisher::factory(),
             'category_id' => Category::factory(),
+            'price' => fake()->randomFloat(2, 0, 100),
+            'quantity' => fake()->numberBetween(0, 100),
+            'cover' => fake()->imageUrl(),
+            'publish_date' => fake()->dateTimeThisCentury(),
         ];
     }
 }
