@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->string('name')->nullable();
+            $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->integer('author_id')->nullable()->index();
             $table->integer('publisher_id')->nullable()->index();

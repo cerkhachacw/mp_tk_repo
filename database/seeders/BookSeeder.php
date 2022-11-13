@@ -18,10 +18,11 @@ class BookSeeder extends Seeder
      */
     public function run()
     {
+        // will be used to create a book
         // Book::factory()->count(1000)->create();
         $this->createAuthor();
         $this->createPublisher();
-
+        $this->createCategoryGroup();
     }
 
     private function createAuthor()
@@ -76,7 +77,7 @@ class BookSeeder extends Seeder
         }
     }
 
-    private function categoryGroup()
+    private function createCategoryGroup()
     {
         $categoryGroups = [
             [
