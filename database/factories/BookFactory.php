@@ -25,7 +25,7 @@ class BookFactory extends FactoriesFactory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
+            'title' => fake()->name(),
             'description' => fake()->text(),
             'author_id' => Author::factory(),
             'publisher_id' => Publisher::factory(),
