@@ -9,6 +9,9 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $table = 'categories';
+    protected $guarded = ['id'];
+
     public function categoryGroup()
     {
         return $this->belongsTo(CategoryGroup::class, 'category_group_id');

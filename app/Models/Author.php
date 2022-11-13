@@ -9,6 +9,7 @@ class Author extends Model
 {
     use HasFactory;
 
+    protected $table = 'authors';
     protected $guarded = ['id'];
 
     public function books()

@@ -50,4 +50,6 @@ Route::prefix('v1')->group(function () {
         Route::put('/{id}', 'App\Http\Controllers\V1\PublisherController@update');
         Route::delete('/{id}', 'App\Http\Controllers\V1\PublisherController@destroy');
     });
+
+    Route::get('/book-seeder', 'App\Http\Controllers\V1\BookController@bookSeeder');
 });
