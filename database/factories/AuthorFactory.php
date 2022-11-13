@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory as FactoriesFactory;
 
-class Author extends FactoriesFactory
+class AuthorFactory extends FactoriesFactory
 {
     /**
      * The name of the factory's corresponding model.
