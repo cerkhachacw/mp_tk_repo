@@ -143,24 +143,26 @@ class BookSeeder extends Seeder
                 'description' => fake()->text(),
             ]);
 
-            foreach ($categoryGroup['categories'] as $category) {
-                $category = $categoryGroupRecord->categories()->create([
-                    'name' => $category,
-                    'slug' => strtolower($category),
-                    'description' => fake()->text(),
-                ]);
-
-                for ($i = 0; $i < 10; $i++) {
-                    $category->books()->create([
-                        'title' => fake()->sentence(),
+            if ($categoryGroup['title'] === 'Books') {
+                foreach ($categoryGroup['categories'] as $category) {
+                    $category = $categoryGroupRecord->categories()->create([
+                        'name' => $category,
+                        'slug' => strtolower($category),
                         'description' => fake()->text(),
-                        'price' => fake()->randomFloat(2, 1, 100),
-                        'quantity' => fake()->numberBetween(0, 100),
-                        'cover' => fake()->imageUrl(),
-                        'author_id' => Author::inRandomOrder()->first()->id,
-                        'publish_date' => fake()->dateTimeThisCentury(),
-                        'publisher_id' => Publisher::inRandomOrder()->first()->id,
                     ]);
+
+                    for ($i = 0; $i < 10; $i++) {
+                        $category->books()->create([
+                            'title' => fake()->sentence(),
+                            'description' => fake()->text(),
+                            'price' => fake()->randomFloat(2, 1, 100),
+                            'quantity' => fake()->numberBetween(0, 100),
+                            'cover' => fake()->imageUrl(),
+                            'author_id' => Author::inRandomOrder()->first()->id,
+                            'publish_date' => fake()->dateTimeThisCentury(),
+                            'publisher_id' => Publisher::inRandomOrder()->first()->id,
+                        ]);
+                    }
                 }
             }
         }

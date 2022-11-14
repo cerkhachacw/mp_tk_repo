@@ -24,7 +24,12 @@ class StoreAuthorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string',
+            'email' => 'nullable|email',
+            'phone' => 'nullable|string',
+            'address' => 'nullable|string',
+            'avatar' => 'nullable|string',
+            'dob' => 'nullable|date',
         ];
     }
 }

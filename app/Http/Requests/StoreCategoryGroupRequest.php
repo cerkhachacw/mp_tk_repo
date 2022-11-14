@@ -24,7 +24,9 @@ class StoreCategoryGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string',
+            'description' => 'nullable|string',
+            'slug' => 'required|string|unique:category_groups,slug,except,id',
         ];
     }
 }

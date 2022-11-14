@@ -12,12 +12,16 @@ class BookResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            // 'isbn' => $this->isbn,
-            // 'price' => $this->price,
-            // 'publisher' => $this->publisher,
-            // 'categories' => $this->categories,
+            'cover' => $this->cover,
+            'price' => $this->price,
+            'quantity' => $this->quantity,
+            'publish_date' => $this->publish_date,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+
+            'author' => new AuthorResource($this->whenLoaded('author')),
+            'publisher' => new PublisherResource($this->whenLoaded('publisher')),
+            'category' => new CategoryResource($this->whenLoaded('category')),
         ];
     }
 }
