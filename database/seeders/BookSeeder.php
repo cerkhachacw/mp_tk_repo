@@ -18,7 +18,7 @@ class BookSeeder extends Seeder
     public function run()
     {
         // will be used to create a book
-        Book::factory()->count(1000)->create();
+        // Book::factory()->count(1000)->create();
         $this->createAuthor();
         $this->createPublisher();
         $this->createCategoryGroup();
@@ -151,7 +151,7 @@ class BookSeeder extends Seeder
                         'description' => fake()->text(),
                     ]);
 
-                    for ($i = 0; $i < 10; $i++) {
+                    for ($i = 0; $i < 50; $i++) {
                         $category->books()->create([
                             'title' => fake()->sentence(),
                             'description' => fake()->text(),
