@@ -11,9 +11,4 @@ class Publisher extends Model
 
     protected $table = 'publishers';
     protected $guarded = ['id'];
-
-    public function books()
-    {
-        return $this->hasMany(Book::class, 'publisher_id');
-    }
 }

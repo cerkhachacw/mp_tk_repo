@@ -13,7 +13,7 @@ class StoreBookRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,11 +28,10 @@ class StoreBookRequest extends FormRequest
             'description' => 'nullable|string',
             'author_id' => 'required|integer|exists:authors,id',
             'publisher_id' => 'required|integer|exists:publishers,id',
-            'category_id' => 'required|integer|exists:category_groups,id',
+            'category_id' => 'required|integer|exists:categories,id',
             'cover' => 'nullable|string',
             'price' => 'required|integer',
-            'quantity' => 'required|integer',
-            'publish_date' => 'required|date',
+            'publish_date' => 'required|date|date_format:Y-m-d',
         ];
     }
 }

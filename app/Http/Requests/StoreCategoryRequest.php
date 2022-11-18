@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCategoryRequest extends FormRequest
@@ -13,7 +14,7 @@ class StoreCategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,10 +24,12 @@ class StoreCategoryRequest extends FormRequest
      */
     public function rules()
     {
+        $category = Category::find($this->id ?? 0);
+
         return [
             'name' => 'required|string',
             'description' => 'nullable|string',
-            'slug' => 'required|string|unique:categories,slug,except,id',
+            'slug' => 'required|string|unique:categories,slug,'.($category->id ?? 0),
             'category_group_id' => 'required|integer|exists:category_groups,id',
         ];
     }

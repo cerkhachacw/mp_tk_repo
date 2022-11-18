@@ -11,6 +11,13 @@ class Book extends Model
     protected $table = 'books';
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'publish_date' => 'date',
+        'price' => 'integer',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
     public function publisher()
     {
         return $this->belongsTo(Publisher::class, 'publisher_id');

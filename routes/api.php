@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\V1\AuthorController;
+use App\Http\Controllers\V1\BookController;
+use App\Http\Controllers\V1\CategoryController;
+use App\Http\Controllers\V1\CategoryGroupController;
+use App\Http\Controllers\V1\PublisherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,35 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('v1')->group(function () {
-    Route::group(['prefix' => 'authors'], function () {
-        Route::get('/', 'App\Http\Controllers\V1\AuthorController@index');
-        Route::post('/', 'App\Http\Controllers\V1\AuthorController@store');
-        Route::get('/{id}', 'App\Http\Controllers\V1\AuthorController@show');
-        Route::put('/{id}', 'App\Http\Controllers\V1\AuthorController@update');
-        Route::delete('/{id}', 'App\Http\Controllers\V1\AuthorController@destroy');
-    });
-
-    Route::group(['prefix' => 'books'], function () {
-        Route::get('/', 'App\Http\Controllers\V1\BookController@index');
-        Route::post('/', 'App\Http\Controllers\V1\BookController@store');
-        Route::get('/{id}', 'App\Http\Controllers\V1\BookController@show');
-        Route::put('/{id}', 'App\Http\Controllers\V1\BookController@update');
-        Route::delete('/{id}', 'App\Http\Controllers\V1\BookController@destroy');
-    });
-
-    Route::group(['prefix' => 'categories'], function () {
-        Route::get('/', 'App\Http\Controllers\V1\CategoryController@index');
-        Route::post('/', 'App\Http\Controllers\V1\CategoryController@store');
-        Route::get('/{id}', 'App\Http\Controllers\V1\CategoryController@show');
-        Route::put('/{id}', 'App\Http\Controllers\V1\CategoryController@update');
-        Route::delete('/{id}', 'App\Http\Controllers\V1\CategoryController@destroy');
-    });
-
-    Route::group(['prefix' => 'publishers'], function () {
-        Route::get('/', 'App\Http\Controllers\V1\PublisherController@index');
-        Route::post('/', 'App\Http\Controllers\V1\PublisherController@store');
-        Route::get('/{id}', 'App\Http\Controllers\V1\PublisherController@show');
-        Route::put('/{id}', 'App\Http\Controllers\V1\PublisherController@update');
-        Route::delete('/{id}', 'App\Http\Controllers\V1\PublisherController@destroy');
-    });
+    Route::apiResource('authors', AuthorController::class)->parameter('authors', 'id');
+    Route::apiResource('books', BookController::class)->parameter('books', 'id');
+    Route::apiResource('categories', CategoryController::class)->parameter('categories', 'id');
+    Route::apiResource('category-groups', CategoryGroupController::class)->parameter('category-groups', 'id');
+    Route::apiResource('publishers', PublisherController::class)->parameter('publishers', 'id');
 });

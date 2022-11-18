@@ -11,9 +11,4 @@ class CategoryGroup extends Model
 
     protected $table = 'category_groups';
     protected $guarded = ['id'];
-
-    public function categories()
-    {
-        return $this->hasMany(Category::class, 'category_group_id');
-    }
 }

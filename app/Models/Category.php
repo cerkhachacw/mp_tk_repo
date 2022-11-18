@@ -16,9 +16,4 @@ class Category extends Model
     {
         return $this->belongsTo(CategoryGroup::class, 'category_group_id');
     }
-
-    public function books()
-    {
-        return $this->hasMany(Book::class, 'category_id');
-    }
 }

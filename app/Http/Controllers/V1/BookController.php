@@ -16,4 +16,20 @@ class BookController extends Base
 
     public $resource = BookResource::class;
 
+    public $searchAble = ['title', 'description', 'author.name', 'category.name', 'publisher.name'];
+
+    public function __prepareQueryList($query)
+    {
+        if ($this->requestData->has('author_id')) {
+            $query->where('author_id', $this->requestData->input('author_id'));
+        }
+
+        if ($this->requestData->has('category_id')) {
+            $query->where('category_id', $this->requestData->input('category_id'));
+        }
+
+        if ($this->requestData->has('publisher_id')) {
+            $query->where('publisher_id', $this->requestData->input('publisher_id'));
+        }
+    }
 }

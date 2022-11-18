@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\CategoryGroup;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCategoryGroupRequest extends FormRequest
@@ -13,7 +14,7 @@ class StoreCategoryGroupRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,10 +24,11 @@ class StoreCategoryGroupRequest extends FormRequest
      */
     public function rules()
     {
+        $categoryGroup = CategoryGroup::find($this->id ?? 0);
         return [
             'name' => 'required|string',
             'description' => 'nullable|string',
-            'slug' => 'required|string|unique:category_groups,slug,except,id',
+            'slug' => 'required|string|unique:category_groups,slug,'.($categoryGroup->id ?? 0),
         ];
     }
 }

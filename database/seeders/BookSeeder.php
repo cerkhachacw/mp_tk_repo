@@ -34,6 +34,12 @@ class BookSeeder extends Seeder
             'J. D. Salinger',
             'Stephenie Meyer',
             'Harper Lee',
+            'John Green',
+            'Jane Austen',
+            'William Shakespeare',
+            'Mark Twain',
+            'Charles Dickens',
+            'Agatha Christie',
         ];
 
         foreach ($authors as $author) {
@@ -66,6 +72,21 @@ class BookSeeder extends Seeder
             'Oxford University Press',
             'Cengage Learning',
             'Elsevier',
+            'Cambridge University Press',
+            'Springer Nature',
+            'Taylor & Francis',
+            'W. W. Norton & Company',
+            'DK',
+            'Wiley-Blackwell',
+            'Routledge',
+            'SAGE Publications',
+            'McGraw-Hill Education',
+            'Lippincott Williams & Wilkins',
+            'Thomson Reuters',
+            'John Wiley & Sons',
+            'Bloomsbury Publishing',
+            'Oxford University Press',
+            'Cengage Learning',
         ];
 
         foreach ($publishers as $publisher) {
@@ -109,6 +130,14 @@ class BookSeeder extends Seeder
                     "Humor",
                     "Comics",
                     "Graphic Novels",
+                    "Food and Drink",
+                    "Business",
+                    "Reference",
+                    "Science",
+                    "Math",
+                    "Social Sciences",
+                    "Computers",
+                    "Technology",
                 ]
             ],
             [
@@ -156,7 +185,6 @@ class BookSeeder extends Seeder
                             'title' => fake()->sentence(),
                             'description' => fake()->text(),
                             'price' => fake()->randomFloat(2, 1, 100),
-                            'quantity' => fake()->numberBetween(0, 100),
                             'cover' => fake()->imageUrl(),
                             'author_id' => Author::inRandomOrder()->first()->id,
                             'publish_date' => fake()->dateTimeThisCentury(),

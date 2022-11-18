@@ -15,8 +15,6 @@ class CategoryGroupResource extends JsonResource
             'slug' => $this->slug,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-
-            'categories' => CategoryResource::collection($this->whenLoaded('categories')),
         ];
     }
 }

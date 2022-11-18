@@ -18,8 +18,6 @@ class AuthorResource extends JsonResource
             'dob' => $this->dob,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-
-            'books' => BookResource::collection($this->whenLoaded('books')),
         ];
     }
 }
