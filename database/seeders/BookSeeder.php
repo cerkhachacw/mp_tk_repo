@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Author;
 use App\Models\Book;
+use App\Models\Category;
 use App\Models\CategoryGroup;
 use App\Models\Publisher;
 use Illuminate\Database\Seeder;
@@ -174,14 +175,15 @@ class BookSeeder extends Seeder
 
             if ($categoryGroup['title'] === 'Books') {
                 foreach ($categoryGroup['categories'] as $category) {
-                    $category = $categoryGroupRecord->categories()->create([
+                    $category = Category::create([
                         'name' => $category,
                         'slug' => strtolower($category),
                         'description' => fake()->text(),
+                        'category_group_id' => $categoryGroupRecord->id,
                     ]);
 
                     for ($i = 0; $i < 50; $i++) {
-                        $category->books()->create([
+                        Book::create([
                             'title' => fake()->sentence(),
                             'description' => fake()->text(),
                             'price' => fake()->randomFloat(2, 1, 100),
@@ -189,6 +191,7 @@ class BookSeeder extends Seeder
                             'author_id' => Author::inRandomOrder()->first()->id,
                             'publish_date' => fake()->dateTimeThisCentury(),
                             'publisher_id' => Publisher::inRandomOrder()->first()->id,
+                            'category_id' => $category->id,
                         ]);
                     }
                 }
